@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>ラジオボタンじゃんけん - 結果</title>
+</head>
+<body>
+    <h1>結果: <%= result %></h1>
+    <p>あなた: <%= hand %>, CPU: <%= cpuHand %></p>
+    <p>戦績: <%= win %>勝 / <%= total %>戦</p>
+
+    <hr>
+
+    <form action="/janken_radio">
+
+        <input type="radio" name="hand" value="グー" id="hand_gu" required>
+        <label for="hand_gu">グー</label>
+
+        <input type="radio" name="hand" value="チョキ" id="hand_choki">
+        <label for="hand_choki">チョキ</label>
+
+        <input type="radio" name="hand" value="パー" id="hand_pa">
+        <label for="hand_pa">パー</label>
+
+        <br><br>
+
+        <input type="submit" value="じゃんけん ポン">
+
+        <input type="hidden" name="win" value="<%= win %>">
+        <input type="hidden" name="total" value="<%= total %>">
+    </form>
+</body>
+</html>
