@@ -1,19 +1,10 @@
 const express = require("express");
 const app = express();
 
-// フォームから送信されたデータ (req.body) を読み取れるようにする設定
-app.use(express.urlencoded({ extended: true }));
-
 app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
-let station = [
-  { id:1, code:"JE01", name:"東京駅"},
-  { id:2, code:"JE07", name:"舞浜駅"},
-  { id:3, code:"JE12", name:"新習志野駅"},
-  { id:4, code:"JE13", name:"幕張豊砂駅"},
-  { id:5, code:"JE14", name:"海浜幕張駅"},
-  { id:6, code:"JE05", name:"新浦安駅"},
-];
+app.use(express.urlencoded({ extended: true }));
+
 let station2 = [
   { id:1, code:"JE01", name:"東京駅", change:"総武本線，中央線，etc", passengers:403831, distance:0 },
   { id:2, code:"JE02", name:"八丁堀駅", change:"日比谷線", passengers:31071, distance:1.2 },
@@ -87,14 +78,7 @@ app.post("/keiyo2/update/:number", (req, res) => {
   res.redirect('/keiyo2' );
 });
 
-app.get("/keiyo", (req, res) => {
-  // 本来ならここにDBとのやり取りが入る
-  res.render('db1', { data: station });
-});
 
-app.get("/keiyo_add", (req, res) => {
-  res.render("db2", { data: station});
-});
 
 app.get("/hello1", (req, res) => {
   const message1 = "Hello world";
@@ -153,39 +137,6 @@ app.get("/janken", (req, res) => {
     total: total
   }
   res.render( 'janken', display );
-});
-
-app.get("/janken_radio", (req, res) => {
-  let hand = req.query.hand; 
-  let win = Number(req.query.win);
-  let total = Number(req.query.total);
-
-  const hands = ["グー", "チョキ", "パー"];
-  const cpuHand = hands[Math.floor(Math.random() * 3)];
-  let result;
-
-  total++; 
-
-  if (hand === cpuHand) {
-      result = "あいこ";
-  } else if (
-      (hand === "グー" && cpuHand === "チョキ") ||
-      (hand === "チョキ" && cpuHand === "パー") ||
-      (hand === "パー" && cpuHand === "グー")
-  ) {
-      result = "勝ち";
-      win++;
-  } else {
-      result = "負け";
-  }
-
-  res.render('janken_radio', {
-      hand: hand,
-      cpuHand: cpuHand,
-      result: result,
-      win: win,
-      total: total
-  });
 });
 
 app.listen(8080, () => console.log("Example app listening on port 8080!"));
