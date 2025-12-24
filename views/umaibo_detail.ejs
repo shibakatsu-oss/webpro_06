@@ -1,0 +1,19 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= data.flavor %></title>
+</head>
+<body>
+  <h2><%= data.flavor %>の詳細</h2>
+  <table>
+    <tr><th>項目</th><th>データ</th></tr>
+    <tr><td>ID</td><td><%= data.id %></td></tr>
+    <tr><td>味</td><td><%= data.flavor %></td></tr>
+    <tr><td>価格</td><td><%= data.price %>円</td></tr>
+    <tr><td>カロリー</td><td><%= data.calorie %>kcal</td></tr>
+  </table>
+  <a href="/umaibo/edit/<%= id %>">編集</a>
+  <a href="/umaibo/delete/<%= id %>">削除</a><a href="/umaibo">一覧に戻る</a>
+</body>
+</html>

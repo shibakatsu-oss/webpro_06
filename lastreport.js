@@ -1,4 +1,4 @@
-"use strict"; [cite_start]// PDFの要件 [cite: 119]
+"use strict"; 
 
 const express = require("express");
 const app = express();

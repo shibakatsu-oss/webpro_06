@@ -1,0 +1,20 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= data.flavor %></title>
+</head>
+<body>
+  <h2><%= data.flavor %>の編集</h2>
+  <form action="/umaibo/update/<%= id %>" method="POST">
+    <table>
+      <tr><th>項目</th><th>データ</th></tr>
+      <tr><td>味</td><td><input type="text" name="flavor" value="<%= data.flavor %>"></td></tr>
+      <tr><td>価格</td><td><input type="text" name="price" value="<%= data.price %>"></td></tr>
+      <tr><td>カロリー</td><td><input type="text" name="calorie" value="<%= data.calorie %>"></td></tr>
+    </table>
+    <input type="submit" value="登録">
+  </form>
+  <a href="/umaibo/">一覧に戻る</a>
+</body>
+</html>

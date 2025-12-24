@@ -1,0 +1,19 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= data.name %></title>
+</head>
+<body>
+  <h2><%= data.name %>の詳細</h2>
+  <table>
+    <tr><th>項目</th><th>データ</th></tr>
+    <tr><td>ID</td><td><%= data.id %></td></tr>
+    <tr><td>ブキ名</td><td><%= data.name %></td></tr>
+    <tr><td>サブ</td><td><%= data.sub %></td></tr>
+    <tr><td>スペシャル</td><td><%= data.special %></td></tr>
+  </table>
+  <a href="/splatoon/edit/<%= id %>">編集</a>
+  <a href="/splatoon/delete/<%= id %>">削除</a><a href="/splatoon">一覧に戻る</a>
+</body>
+</html>

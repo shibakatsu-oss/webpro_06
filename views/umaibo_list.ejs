@@ -1,0 +1,23 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>うまい棒リスト</title>
+</head>
+<body>
+  <h2>うまい棒の一覧</h2>
+  <table>
+    <tr><th>ID</th><th>味</th></tr>
+      <% let number = 0 %>
+      <% for( let row of data ) { %>
+        <tr>
+          <td><%= row.id %></td>
+          <td><a href="/umaibo/<%= number %>"><%= row.flavor %></a></td>
+        </tr>
+        <% number += 1 %>
+      <% } %>
+  </table>
+  <br>
+  <a href="/umaibo/create">新規追加</a>
+</body>
+</html>

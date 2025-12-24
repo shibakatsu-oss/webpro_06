@@ -1,0 +1,20 @@
+<!Doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title><%= data.name %></title>
+</head>
+<body>
+  <h2><%= data.name %>の編集</h2>
+  <form action="/splatoon/update/<%= id %>" method="POST">
+    <table>
+      <tr><th>項目</th><th>データ</th></tr>
+      <tr><td>ブキ名</td><td><input type="text" name="name" value="<%= data.name %>"></td></tr>
+      <tr><td>サブ</td><td><input type="text" name="sub" value="<%= data.sub %>"></td></tr>
+      <tr><td>スペシャル</td><td><input type="text" name="special" value="<%= data.special %>"></td></tr>
+    </table>
+    <input type="submit" value="登録">
+  </form>
+  <a href="/splatoon/">一覧に戻る</a>
+</body>
+</html>
