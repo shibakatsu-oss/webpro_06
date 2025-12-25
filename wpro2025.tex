@@ -1,0 +1,153 @@
+\documentclass[a4paper,11pt]{jsarticle}
+\usepackage[dvipdfmx]{graphicx}
+\usepackage{url}
+\usepackage{listings}
+\usepackage{ascmac} 
+
+
+\title{Webプログラミング 最終課題レポート}
+\author{251134 横居 克憲} 
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{screen}
+\textbf{ソースコード (GitHubリポジトリURL):}\\
+\url{https://github.com/shibakatsu-oss/webpro_06}
+\end{screen}
+
+\vspace{1cm} 
+
+\section{利用者向け仕様書}
+% 3つの内の代表的なシステムについて1つ記述
+
+\subsection{システム概要}
+本システムは，うまい棒の情報を管理・閲覧するためのWebアプリケーションである．
+利用者は，うまい棒の味，価格，カロリーなどを一覧で確認できるほか，詳細情報の閲覧や新規登録が可能である．
+
+\subsection{操作方法}
+\begin{enumerate}
+    \item \textbf{一覧画面}: トップページにアクセスすると，現在登録されているうまい棒の一覧が表示される．
+    \item \textbf{詳細表示}: 一覧の「味」のリンクをクリックすると，そのうまい棒の詳細情報（価格・カロリー）が表示される．
+    \item \textbf{新規登録}: 一覧画面下部の「新規追加」ボタンを押すと，登録画面に遷移する．必要な情報を入力して「登録」を押すとデータが保存される．
+    \item \textbf{削除}: 一覧画面または詳細画面にある「削除」リンクをクリックすると，該当データが削除される．
+\end{enumerate}
+
+
+\section{管理者向け仕様書}
+% 管理者からすると1つのシステムのため全体で1つ記述
+
+\subsection{システムのセットアップ}
+本システムはNode.js上で動作する．以下の手順でサーバーを起動する．
+
+\begin{verbatim}
+$ npm install express ejs
+$ node app5.js
+\end{verbatim}
+
+\subsection{動作環境}
+\begin{itemize}
+    \item Node.js 
+    \item Webブラウザ
+\end{itemize}
+
+
+\section{開発者向け仕様書}
+%  システムごとに1つで計3つ記述
+
+\subsection{システム1: うまい棒管理システム}
+
+\subsubsection{データ構造}
+データは配列 \texttt{umaiboData} 内のオブジェクトとして管理する．
+各オブジェクトは以下のプロパティを持つ．
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        プロパティ名 & 型 & 説明 \\
+        \hline
+        id & 数値 & データ固有のID \\
+        flavor & 文字列 & うまい棒の味（例: メンタイ） \\
+        price & 数値 & 価格（円） \\
+        calorie & 数値 & カロリー（kcal） \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{画面遷移とリソース}
+HTTPメソッドとリソース名（URL）の対応は以下の通りである．
+
+\begin{itemize}
+    \item \textbf{一覧表示} (GET \texttt{/umaibo}): 全データを一覧表示する．
+    \item \textbf{詳細表示} (GET \texttt{/umaibo/:number}): 指定IDの詳細を表示する．
+    \item \textbf{新規登録フォーム} (GET \texttt{/umaibo/create}): 登録画面へ遷移する．
+    \item \textbf{新規登録処理} (POST \texttt{/umaibo}): データを追加し一覧へ戻る．
+    \item \textbf{編集フォーム} (GET \texttt{/umaibo/edit/:number}): 編集画面を表示する．
+    \item \textbf{更新処理} (POST \texttt{/umaibo/update/:number}): データを更新する．
+    \item \textbf{削除処理} (GET \texttt{/umaibo/delete/:number}): データを削除する．
+\end{itemize}
+
+\subsection{システム2: スマブラキャラ一覧システム}
+
+\subsubsection{データ構造}
+データは配列 \texttt{smashData} 内のオブジェクトとして管理する．
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        プロパティ名 & 型 & 説明 \\
+        \hline
+        id & 数値 & データ固有のID \\
+        name & 文字列 & ファイター名（例: マリオ） \\
+        series & 文字列 & 出典作品（例: スーパーマリオ） \\
+        number & 文字列 & 参戦ナンバー（例: 01） \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{画面遷移とリソース}
+\begin{itemize}
+    \item \textbf{一覧表示} (GET \texttt{/smash}): 全キャラを一覧表示する．
+    \item \textbf{詳細表示} (GET \texttt{/smash/:index}): 指定キャラの詳細を表示する．
+    \item \textbf{新規登録フォーム} (GET \texttt{/smash/create}): 登録画面へ遷移する．
+    \item \textbf{新規登録処理} (POST \texttt{/smash}): データを追加する．
+    \item \textbf{編集フォーム} (GET \texttt{/smash/edit/:index}): 編集画面を表示する．
+    \item \textbf{更新処理} (POST \texttt{/smash/update/:index}): データを更新する．
+    \item \textbf{削除処理} (GET \texttt{/smash/delete/:index}): データを削除する．
+\end{itemize}
+
+\subsection{システム3: スプラトゥーン武器一覧システム}
+
+\subsubsection{データ構造}
+データは配列 \texttt{splaData} 内のオブジェクトとして管理する．
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|l|l|l|}
+        \hline
+        プロパティ名 & 型 & 説明 \\
+        \hline
+        id & 数値 & データ固有のID \\
+        name & 文字列 & ブキ名（例: わかばシューター） \\
+        sub & 文字列 & サブウェポン（例: スプラッシュボム） \\
+        special & 文字列 & スペシャルウェポン（例: グレートバリア） \\
+        \hline
+    \end{tabular}
+\end{table}
+
+\subsubsection{画面遷移とリソース}
+\begin{itemize}
+    \item \textbf{一覧表示} (GET \texttt{/splatoon}): 全ブキを一覧表示する．
+    \item \textbf{詳細表示} (GET \texttt{/splatoon/:index}): 指定ブキの詳細を表示する．
+    \item \textbf{新規登録フォーム} (GET \texttt{/splatoon/create}): 登録画面へ遷移する．
+    \item \textbf{新規登録処理} (POST \texttt{/splatoon}): データを追加する．
+    \item \textbf{編集フォーム} (GET \texttt{/splatoon/edit/:index}): 編集画面を表示する．
+    \item \textbf{更新処理} (POST \texttt{/splatoon/update/:index}): データを更新する．
+    \item \textbf{削除処理} (GET \texttt{/splatoon/delete/:index}): データを削除する．
+\end{itemize}
+
+\end{document}
