@@ -1,9 +1,37 @@
-\documentclass[a4paper,11pt]{jsarticle}
-\usepackage[dvipdfmx]{graphicx}
+\documentclass[uplatex,dvipdfmx]{jsarticle}
+\usepackage{graphicx}
+\usepackage[uplatex,deluxe]{otf} % UTF
+\usepackage[noalphabet]{pxchfon} % must be after otf package
+\usepackage{stix2} %欧文＆数式フォント
+\usepackage[fleqn,tbtags]{mathtools} % 数式関連 (w/ amsmath)
+\usepackage{hira-stix} % ヒラギノフォント＆STIX2 フォント代替定義（Warning回避）
+\usepackage{float}
+\usepackage{multirow}
 \usepackage{url}
-\usepackage{listings}
-\usepackage{ascmac} 
-
+\usepackage{array}
+\usepackage[margin=1in]{geometry}
+\usepackage[
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue,
+  bookmarks=true
+]{hyperref}
+\usepackage{tikz} 
+\usepackage{pgf-pie}
+\usepackage{graphicx}
+\setcounter{tocdepth}{3}
+\usepackage{float}
+\usepackage{moreverb}
+\usepackage{lscape}
+%\pagestyle{empty}
+%\usepackage{wrapfig}
+%\usepackage{url}
+%\usepackage{EasyLayout}
+\usepackage{amsmath}
+\usepackage{ascmac}
+%\usepackage{fancybx}
+%\pagestyle{myheadings}
 
 \title{Webプログラミング 最終課題レポート}
 \author{251134 横居 克憲} 
@@ -27,25 +55,131 @@
 本システムは，うまい棒の情報を管理・閲覧するためのWebアプリケーションである．
 利用者は，うまい棒の味，価格，カロリーなどを一覧で確認できるほか，詳細情報の閲覧や新規登録が可能である．
 
+\subsection{利用方法}
+普段Web サイトを閲覧する際に使用しているブラウザを起動し，http://localhost:8080/umaibo を入力してアクセスする．図\ref{fig:1}のような画面が表示されたらサイトを開けている状態である．
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{homepage.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトを開いた際に表示される画面の例}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:1}
+\end{figure}
+
 \subsection{操作方法}
-\begin{enumerate}
-    \item \textbf{一覧画面}: トップページにアクセスすると，現在登録されているうまい棒の一覧が表示される．
-    \item \textbf{詳細表示}: 一覧の「味」のリンクをクリックすると，そのうまい棒の詳細情報（価格・カロリー）が表示される．
-    \item \textbf{新規登録}: 一覧画面下部の「新規追加」ボタンを押すと，登録画面に遷移する．必要な情報を入力して「登録」を押すとデータが保存される．
-    \item \textbf{削除}: 一覧画面または詳細画面にある「削除」リンクをクリックすると，該当データが削除される．
-\end{enumerate}
+\subsubsection{一覧画面}
+トップページにアクセスすると，図\ref{fig:1}のような現在登録されているうまい棒の一覧が表示される．ここには，これまでに登録されたうまい棒が一覧表示でみれる．
+\subsubsection{詳細表示}
+詳細を表示したい場合は，画面内の青色や紫色になっているうまい棒の味をクリックする．一例として，「コーンポタージュ」をクリックしたら図\ref{fig:2}のように，価格やカロリー数などの詳細が書かれた画面が表示される．一覧画面に戻りたい場合は図\ref{fig:3}にて赤い線で囲っている「一覧に戻る」をクリックする．
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{corn.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトのコーンポタージュのページを開いた際に表示される画面の例}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{all.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で一覧表示のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:2}
+\end{figure}
+
+\subsubsection{新規登録}
+図\ref{fig:4}のように一覧画面下部の「新規追加」ボタンを押すと，図\ref{fig:5}の登録画面に遷移する．そこで必要な情報を入力して「登録」を押すとデータが保存される．
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{new.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトを開いた際に表示される画面で新規登録のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{newpage.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトの新規登録ページを開いた際に表示される画面で登録のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:5}
+\end{figure}
 
 
+\subsubsection{情報編集}
+登録した（もしくはされた）情報は，図\ref{fig:6}でマークが付いてるように，「編集」のボタンを押したら図\ref{fig:7}の編集画面に遷移する．そこで変えたい項目を書き換えて「登録」を押すとデータが保存される．
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{re.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で編集のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:6}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{ret.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトの編集ページを開いた際に表示される画面で登録のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:7}
+\end{figure}
+
+\subsubsection{削除}
+図\ref{fig:8}に示している詳細画面にある「削除」リンクをクリックすると，その時開いているページの項目が一覧画面から削除される．
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{deliet.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で削除のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:8}
+\end{figure}
 \section{管理者向け仕様書}
 % 管理者からすると1つのシステムのため全体で1つ記述
 
-\subsection{システムのセットアップ}
-本システムはNode.js上で動作する．以下の手順でサーバーを起動する．
-
-\begin{verbatim}
-$ npm install express ejs
-$ node app5.js
-\end{verbatim}
+\subsection{システム概要}
+本システムは，Node.js環境上で動作するWebアプリケーションである．
+WebアプリケーションフレームワークとしてExpress，テンプレートエンジンとしてEJSを採用している．
 
 \subsection{動作環境}
 \begin{itemize}
@@ -53,21 +187,82 @@ $ node app5.js
     \item Webブラウザ
 \end{itemize}
 
+\subsection{導入手順}
+本システムをサーバー環境へ導入（インストール）する手順は以下の通りである．
+
+\begin{enumerate}
+    \item \textbf{Node.jsのインストール}: \\
+    公式サイトよりNode.jsをダウンロードし，インストールする．
+    
+    \item \textbf{ソースコードの配置}: \\
+    任意のディレクトリを作成し，提出されたソースコード一式（\texttt{.js}ファイル、\texttt{views}フォルダ、\texttt{public}フォルダ）を配置する．
+    
+    \item \textbf{依存ライブラリのインストール}: \\
+    ターミナルで該当ディレクトリに移動し，以下のコマンドを実行して必要なライブラリ（Express, EJS）をインストールする．
+\begin{verbatim}
+$ npm install express ejs
+\end{verbatim}
+\end{enumerate}
+
+\subsection{運用操作}
+\subsubsection{起動と停止}
+\begin{itemize}
+    \item \textbf{システムの起動}: \\
+    以下のコマンドを実行すると，Webサーバーがポート8080で起動する．
+\begin{verbatim}
+$ node app5.js
+\end{verbatim}
+    起動後，ブラウザで \texttt{http://localhost:8080/umaibo} 等へアクセスし，画面が表示されることを確認する．
+
+    \item \textbf{システムの停止}: \\
+    起動中のターミナルで \texttt{Ctrl + C} キーを入力することで，サーバープロセスを終了（停止）できる．
+\end{itemize}
+
+\subsection{運用上の注意}
+本システムを運用するにあたり，以下の点に注意する必要がある．
+
+\begin{itemize}
+    \item \textbf{データの永続性について}: \\
+    本システムは簡易的な実装のため，登録されたデータ（うまい棒やキャラの情報）はサーバーのメモリ（変数）上にのみ保存される．したがって、\textbf{サーバーを再起動（停止）すると，追加・変更したデータはすべて初期状態に戻る}仕様である．重要なデータを扱う場合は，別途データベースの実装が必要となる．
+    
+    \item \textbf{ポート番号の競合}: \\
+    本システムはポート8080を使用する．同一サーバー内で他のアプリケーションがポート8080を使用している場合，起動に失敗する．その際は，ソースコード内のポート番号設定を変更するか競合するプロセスを停止する必要がある．
+\end{itemize}
+
 
 \section{開発者向け仕様書}
 %  システムごとに1つで計3つ記述
+\subsection{ファイル構成}
+本システムのディレクトリ構成は以下の通りである。
+\begin{itemize}
+    \item \texttt{app5.js}: サーバーサイドのメインプログラム
+    \item \texttt{views/}: 画面表示用テンプレート (EJSファイル)
+    \item \texttt{public/}: 静的ファイル (新規登録用HTML)
+\end{itemize}
+
+\section{開発者向け仕様書}
+% 要件: システムごとに記述
+
+\subsection{ファイル構成}
+本システムのディレクトリ構成は以下の通りである。
+\begin{itemize}
+    \item \texttt{app5.js}: サーバーサイドのメインプログラム
+    \item \texttt{views/}: 画面表示用テンプレート (EJSファイル)
+    \item \texttt{public/}: 静的ファイル (CSS, 新規登録用HTML)
+\end{itemize}
 
 \subsection{システム1: うまい棒管理システム}
 
 \subsubsection{データ構造}
-データは配列 \texttt{umaiboData} 内のオブジェクトとして管理する．
-各オブジェクトは以下のプロパティを持つ．
+データは，プログラム内の配列変数 \texttt{umaiboData} によって管理される．
+配列内の各要素はオブジェクトであり，以下のプロパティを持つ．
 
 \begin{table}[h]
     \centering
+    \caption{うまい棒システムのデータ定義}
     \begin{tabular}{|l|l|l|}
         \hline
-        プロパティ名 & 型 & 説明 \\
+        プロパティ名 & データ型 & 説明 \\
         \hline
         id & 数値 & データ固有のID \\
         flavor & 文字列 & うまい棒の味（例: メンタイ） \\
@@ -77,29 +272,73 @@ $ node app5.js
     \end{tabular}
 \end{table}
 
-\subsubsection{画面遷移とリソース}
-HTTPメソッドとリソース名（URL）の対応は以下の通りである．
+\subsubsection{画面遷移とリソース設計}
+本システムでは，以下のURLパターン（リソース）とHTTPメソッドを用いて機能を実装している．
+URL内の \texttt{:number} は，配列内の要素番号を示す動的なパラメータである．
 
 \begin{itemize}
-    \item \textbf{一覧表示} (GET \texttt{/umaibo}): 全データを一覧表示する．
-    \item \textbf{詳細表示} (GET \texttt{/umaibo/:number}): 指定IDの詳細を表示する．
-    \item \textbf{新規登録フォーム} (GET \texttt{/umaibo/create}): 登録画面へ遷移する．
-    \item \textbf{新規登録処理} (POST \texttt{/umaibo}): データを追加し一覧へ戻る．
-    \item \textbf{編集フォーム} (GET \texttt{/umaibo/edit/:number}): 編集画面を表示する．
-    \item \textbf{更新処理} (POST \texttt{/umaibo/update/:number}): データを更新する．
-    \item \textbf{削除処理} (GET \texttt{/umaibo/delete/:number}): データを削除する．
+    \item \textbf{一覧表示}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/umaibo}
+        \item 処理: \texttt{umaibo\_list.ejs} をレンダリングし，全データを一覧表示する．
+    \end{itemize}
+
+    \item \textbf{詳細表示}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/umaibo/:number}
+        \item 処理: 指定された要素番号の詳細データを \texttt{umaibo\_detail.ejs} で表示する．
+    \end{itemize}
+    
+    \item \textbf{新規登録画面}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/umaibo/create}
+        \item 処理: 静的ファイル \texttt{/public/umaibo\_new.html} へリダイレクトする．
+    \end{itemize}
+
+    \item \textbf{新規登録処理}
+    \begin{itemize}
+        \item メソッド: POST
+        \item URL: \texttt{/umaibo}
+        \item 処理: フォームから送信されたデータを配列に追加し，一覧画面を表示する．
+    \end{itemize}
+
+    \item \textbf{編集画面}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/umaibo/edit/:number}
+        \item 処理: 指定データの編集用フォーム（\texttt{umaibo\_edit.ejs}）を表示する．
+    \end{itemize}
+
+    \item \textbf{更新処理}
+    \begin{itemize}
+        \item メソッド: POST
+        \item URL: \texttt{/umaibo/update/:number}
+        \item 処理: 指定要素番号のデータを更新し，一覧画面へリダイレクトする．
+    \end{itemize}
+
+    \item \textbf{削除処理}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/umaibo/delete/:number}
+        \item 処理: 指定要素番号のデータを配列から削除し，一覧画面へリダイレクトする．
+    \end{itemize}
 \end{itemize}
 
 \subsection{システム2: スマブラキャラ一覧システム}
 
 \subsubsection{データ構造}
-データは配列 \texttt{smashData} 内のオブジェクトとして管理する．
+データは，プログラム内の配列変数 \texttt{smashData} によって管理される．
+配列内の各要素はオブジェクトであり，以下のプロパティを持つ．
 
 \begin{table}[h]
     \centering
+    \caption{スマブラシステムのデータ定義}
     \begin{tabular}{|l|l|l|}
         \hline
-        プロパティ名 & 型 & 説明 \\
+        プロパティ名 & データ型 & 説明 \\
         \hline
         id & 数値 & データ固有のID \\
         name & 文字列 & ファイター名（例: マリオ） \\
@@ -109,45 +348,144 @@ HTTPメソッドとリソース名（URL）の対応は以下の通りである�
     \end{tabular}
 \end{table}
 
-\subsubsection{画面遷移とリソース}
+\subsubsection{画面遷移とリソース設計}
+URL内の \texttt{:index} は，配列内の要素番号を示すパラメータである．
+
 \begin{itemize}
-    \item \textbf{一覧表示} (GET \texttt{/smash}): 全キャラを一覧表示する．
-    \item \textbf{詳細表示} (GET \texttt{/smash/:index}): 指定キャラの詳細を表示する．
-    \item \textbf{新規登録フォーム} (GET \texttt{/smash/create}): 登録画面へ遷移する．
-    \item \textbf{新規登録処理} (POST \texttt{/smash}): データを追加する．
-    \item \textbf{編集フォーム} (GET \texttt{/smash/edit/:index}): 編集画面を表示する．
-    \item \textbf{更新処理} (POST \texttt{/smash/update/:index}): データを更新する．
-    \item \textbf{削除処理} (GET \texttt{/smash/delete/:index}): データを削除する．
+    \item \textbf{一覧表示}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/smash}
+        \item 処理: \texttt{smash\_list.ejs} をレンダリングし，全キャラクターを表示する．
+    \end{itemize}
+
+    \item \textbf{詳細表示}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/smash/:index}
+        \item 処理: 指定された要素番号の詳細を \texttt{smash\_detail.ejs} で表示する．
+    \end{itemize}
+    
+    \item \textbf{新規登録画面}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/smash/create}
+        \item 処理: \texttt{/public/smash\_new.html} へリダイレクトする．
+    \end{itemize}
+
+    \item \textbf{新規登録処理}
+    \begin{itemize}
+        \item メソッド: POST
+        \item URL: \texttt{/smash}
+        \item 処理: データを配列に追加し，一覧画面を表示する．
+    \end{itemize}
+
+    \item \textbf{編集画面}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/smash/edit/:index}
+        \item 処理: 編集用フォーム（\texttt{smash\_edit.ejs}）を表示する．
+    \end{itemize}
+
+    \item \textbf{更新処理}
+    \begin{itemize}
+        \item メソッド: POST
+        \item URL: \texttt{/smash/update/:index}
+        \item 処理: データを更新し，一覧画面へリダイレクトする．
+    \end{itemize}
+
+    \item \textbf{削除処理}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/smash/delete/:index}
+        \item 処理: データを削除し，一覧画面へリダイレクトする．
+    \end{itemize}
 \end{itemize}
 
 \subsection{システム3: スプラトゥーン武器一覧システム}
 
 \subsubsection{データ構造}
-データは配列 \texttt{splaData} 内のオブジェクトとして管理する．
+データは，プログラム内の配列変数 \texttt{splaData} によって管理される．
+配列内の各要素はオブジェクトであり，以下のプロパティを持つ．
 
 \begin{table}[h]
     \centering
+    \caption{スプラトゥーンシステムのデータ定義}
     \begin{tabular}{|l|l|l|}
         \hline
-        プロパティ名 & 型 & 説明 \\
+        プロパティ名 & データ型 & 説明 \\
         \hline
         id & 数値 & データ固有のID \\
         name & 文字列 & ブキ名（例: わかばシューター） \\
-        sub & 文字列 & サブウェポン（例: スプラッシュボム） \\
-        special & 文字列 & スペシャルウェポン（例: グレートバリア） \\
+        sub & 文字列 & サブウェポン名（例: スプラッシュボム） \\
+        special & 文字列 & スペシャルウェポン名（例: グレートバリア） \\
         \hline
     \end{tabular}
 \end{table}
 
-\subsubsection{画面遷移とリソース}
+\subsubsection{画面遷移とリソース設計}
+URL内の \texttt{:index} は，配列内の要素番号を示すパラメータである．
+
 \begin{itemize}
-    \item \textbf{一覧表示} (GET \texttt{/splatoon}): 全ブキを一覧表示する．
-    \item \textbf{詳細表示} (GET \texttt{/splatoon/:index}): 指定ブキの詳細を表示する．
-    \item \textbf{新規登録フォーム} (GET \texttt{/splatoon/create}): 登録画面へ遷移する．
-    \item \textbf{新規登録処理} (POST \texttt{/splatoon}): データを追加する．
-    \item \textbf{編集フォーム} (GET \texttt{/splatoon/edit/:index}): 編集画面を表示する．
-    \item \textbf{更新処理} (POST \texttt{/splatoon/update/:index}): データを更新する．
-    \item \textbf{削除処理} (GET \texttt{/splatoon/delete/:index}): データを削除する．
+    \item \textbf{一覧表示}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/splatoon}
+        \item 処理: 全ブキデータを \texttt{spla\_list.ejs} で一覧表示する．
+    \end{itemize}
+
+    \item \textbf{詳細表示}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/splatoon/:index}
+        \item 処理: 指定されたブキの詳細を \texttt{spla\_detail.ejs} で表示する．
+    \end{itemize}
+    
+    \item \textbf{新規登録画面}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/splatoon/create}
+        \item 処理: \texttt{/public/spla\_new.html} へリダイレクトする．
+    \end{itemize}
+
+    \item \textbf{新規登録処理}
+    \begin{itemize}
+        \item メソッド: POST
+        \item URL: \texttt{/splatoon}
+        \item 処理: データを配列に追加し，一覧画面を表示する．
+    \end{itemize}
+
+    \item \textbf{編集画面}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/splatoon/edit/:index}
+        \item 処理: 編集用フォーム（\texttt{spla\_edit.ejs}）を表示する．
+    \end{itemize}
+
+    \item \textbf{更新処理}
+    \begin{itemize}
+        \item メソッド: POST
+        \item URL: \texttt{/splatoon/update/:index}
+        \item 処理: データを更新し，一覧画面へリダイレクトする．
+    \end{itemize}
+
+    \item \textbf{削除処理}
+    \begin{itemize}
+        \item メソッド: GET
+        \item URL: \texttt{/splatoon/delete/:index}
+        \item 処理: データを削除し，一覧画面へリダイレクトする．
+    \end{itemize}
 \end{itemize}
+
+\subsubsection{画面遷移図}
+本システムの画面遷移（3システム共通）を図\ref{fig:9}に示す．
+
+\begin{figure}[h]
+    \centering
+    % 画像ファイル名は実際に保存した名前に変更してください
+    \includegraphics[width=20cm]{senizu.png} 
+    \caption{画面遷移図}
+    \label{fig:9}
+\end{figure}
 
 \end{document}
