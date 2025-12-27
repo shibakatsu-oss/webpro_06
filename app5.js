@@ -199,11 +199,16 @@ app.use(express.urlencoded({ extended: true }));
 
 // データ (ID, 味, 価格, カロリー)
 let umaiboData = [
-  { id: 1, flavor: "メンタイ", price: 12, calorie: 44 },
+  { id: 1, flavor: "めんたい", price: 12, calorie: 44 },
   { id: 2, flavor: "コーンポタージュ", price: 12, calorie: 43 },
   { id: 3, flavor: "チーズ", price: 12, calorie: 43 },
   { id: 4, flavor: "たこ焼", price: 12, calorie: 44 },
   { id: 5, flavor: "シュガーラスク", price: 12, calorie: 43 },
+  { id: 6, flavor: "とんかつソース", price: 12, calorie:  43},
+  { id: 7, flavor: "テリヤキバーガー", price: 12, calorie:  43},
+  { id: 8, flavor: "サラミ", price: 12, calorie:  43},
+  { id: 9, flavor: "牛タン塩", price: 12, calorie:  43},
+  { id: 10, flavor: "やさいサラダ", price: 12, calorie:  43},
 ];
 
 // 一覧表示
@@ -267,6 +272,11 @@ let smashData = [
   { id: 3, name: "カービィ", series: "星のカービィ", number: "06" },
   { id: 4, name: "ピカチュウ", series: "ポケモン", number: "08" },
   { id: 5, name: "クラウド", series: "FFVII", number: "61" },
+  { id: 6, name: "パックンフラワー", series: "スーパーマリオ", number: "70" },
+  { id: 7, name: "メェンメェン", series: "ARMS", number: "76" },
+  { id: 8, name: "ルフレ", series: "ファイアーブレム", number: "56" },
+  { id: 9, name: "ベヨネッタ", series: "BAYONETTA", number: "63" },
+  { id: 10, name: "スティーブ/アレックス", series: "Minecraft", number: "77" },
 ];
 
 // 一覧表示
@@ -329,6 +339,14 @@ let splaData = [
   { id: 2, name: "スプラシューター", sub: "キューバンボム", special: "ウルトラショット" },
   { id: 3, name: "スプラローラー", sub: "カーリングボム", special: "グレートバリア" },
   { id: 4, name: "スプラチャージャー", sub: "スプラッシュボム", special: "キューインキ" },
+  { id: 5, name: "ホットブラスター", sub: "ロボットボム", special: "グレードバリア" },  
+  { id: 6, name: "パブロ", sub: "スプラッシュボム", special: "メガホンレーザー5.1ch" }, 
+  { id: 7, name: "ヒッセン", sub: "ポイズンミスト", special: "ジェットバック" }, 
+  { id: 8, name: "スプラスピナー", sub: "クイックボム", special: "ウルトラハンコ" }, 
+  { id: 9, name: "スプラマニューバー", sub: "キューバンボム", special: "カニタンク" }, 
+  { id: 10, name: "キャンピングシェルター", sub: "ジャンプビーコン", special: "キューインキ" }, 
+  { id: 11, name: "ドライブワイパー", sub: "トーピード", special: "ウルトラハンコ" }, 
+  { id: 12, name: "LACT-450", sub: "カーリングボム", special: "マルチミサイル" }, 
 ];
 
 // 一覧表示
