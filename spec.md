@@ -16,11 +16,3 @@
 
 ## ページ遷移図
 
-### うまい棒
-graph TD
-    List[一覧画面] -->|新規追加| Create[新規登録画面]
-    Create -->|登録| List
-    List -->|クリック| Detail[詳細画面]
-    Detail -->|編集| Edit[編集画面]
-    Edit -->|更新| List
-    Detail -->|削除| List
