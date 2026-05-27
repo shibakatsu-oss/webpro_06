@@ -48,198 +48,6 @@
 
 \vspace{1cm} 
 
-\section{利用者向け仕様書}
-% 3つの内の代表的なシステムについて1つ記述
-
-\subsection{システム概要}
-本システムは，うまい棒の情報を管理・閲覧するためのWebアプリケーションである．
-利用者は，うまい棒の味，価格，カロリーなどを一覧で確認できるほか，詳細情報の閲覧や新規登録が可能である．
-
-\subsection{利用方法}
-普段Web サイトを閲覧する際に使用しているブラウザを起動し，http://localhost:8080/umaibo を入力してアクセスする．図\ref{fig:1}のような画面が表示されたらサイトを開けている状態である．
-\begin{figure}[H]
-    \centering
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-     \centering
-    \includegraphics[width=15cm]{homepage.png}
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-    \caption{うまい棒管理システムのサイトを開いた際に表示される画面の例}
-    %\vspace{-1.0\baselineskip}
-    \label{fig:1}
-\end{figure}
-
-\subsection{操作方法}
-\subsubsection{一覧画面}
-トップページにアクセスすると，図\ref{fig:1}のような現在登録されているうまい棒の一覧が表示される．ここには，これまでに登録されたうまい棒が一覧表示でみれる．
-\subsubsection{詳細表示}
-詳細を表示したい場合は，画面内の青色や紫色になっているうまい棒の味をクリックする．一例として，「コーンポタージュ」をクリックしたら図\ref{fig:2}のように，価格やカロリー数などの詳細が書かれた画面が表示される．一覧画面に戻りたい場合は図\ref{fig:3}にて赤い線で囲っている「一覧に戻る」をクリックする．
-\begin{figure}[H]
-    \centering
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-     \centering
-    \includegraphics[width=15cm]{corn.png}
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-    \caption{うまい棒管理システムのサイトのコーンポタージュのページを開いた際に表示される画面の例}
-    %\vspace{-1.0\baselineskip}
-    \label{fig:2}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-     \centering
-    \includegraphics[width=15cm]{all.png}
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で一覧表示のボタンを示している画像}
-    %\vspace{-1.0\baselineskip}
-    \label{fig:2}
-\end{figure}
-
-\subsubsection{新規登録}
-図\ref{fig:4}のように一覧画面下部の「新規追加」ボタンを押すと，図\ref{fig:5}の登録画面に遷移する．そこで必要な情報を入力して「登録」を押すとデータが保存される．
-\begin{figure}[H]
-    \centering
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-     \centering
-    \includegraphics[width=15cm]{new.png}
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-    \caption{うまい棒管理システムのサイトを開いた際に表示される画面で新規登録のボタンを示している画像}
-    %\vspace{-1.0\baselineskip}
-    \label{fig:4}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-     \centering
-    \includegraphics[width=15cm]{newpage.png}
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-    \caption{うまい棒管理システムのサイトの新規登録ページを開いた際に表示される画面で登録のボタンを示している画像}
-    %\vspace{-1.0\baselineskip}
-    \label{fig:5}
-\end{figure}
-
-
-\subsubsection{情報編集}
-登録した（もしくはされた）情報は，図\ref{fig:6}でマークが付いてるように，「編集」のボタンを押したら図\ref{fig:7}の編集画面に遷移する．そこで変えたい項目を書き換えて「登録」を押すとデータが保存される．
-
-\begin{figure}[H]
-    \centering
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-     \centering
-    \includegraphics[width=15cm]{re.png}
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で編集のボタンを示している画像}
-    %\vspace{-1.0\baselineskip}
-    \label{fig:6}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-     \centering
-    \includegraphics[width=15cm]{ret.png}
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-    \caption{うまい棒管理システムのサイトの編集ページを開いた際に表示される画面で登録のボタンを示している画像}
-    %\vspace{-1.0\baselineskip}
-    \label{fig:7}
-\end{figure}
-
-\subsubsection{削除}
-図\ref{fig:8}に示している詳細画面にある「削除」リンクをクリックすると，その時開いているページの項目が一覧画面から削除される．
-
-\begin{figure}[H]
-    \centering
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-     \centering
-    \includegraphics[width=15cm]{deliet.png}
-    %\vspace{\baselineskip}
-    %\vspace{-1.5\baselineskip}
-    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で削除のボタンを示している画像}
-    %\vspace{-1.0\baselineskip}
-    \label{fig:8}
-\end{figure}
-\section{管理者向け仕様書}
-% 管理者からすると1つのシステムのため全体で1つ記述
-
-\subsection{システム概要}
-本システムは，Node.js環境上で動作するWebアプリケーションである．
-WebアプリケーションフレームワークとしてExpress，テンプレートエンジンとしてEJSを採用している．
-
-\subsection{動作環境}
-\begin{itemize}
-    \item Node.js 
-    \item Webブラウザ
-\end{itemize}
-
-\subsection{導入手順}
-本システムをサーバー環境へ導入（インストール）する手順は以下の通りである．
-
-\begin{enumerate}
-    \item \textbf{Node.jsのインストール}: \\
-    公式サイトよりNode.jsをダウンロードし，インストールする．
-    
-    \item \textbf{ソースコードの配置}: \\
-    任意のディレクトリを作成し，提出されたソースコード一式（\texttt{.js}ファイル、\texttt{views}フォルダ、\texttt{public}フォルダ）を配置する．
-    
-    \item \textbf{依存ライブラリのインストール}: \\
-    ターミナルで該当ディレクトリに移動し，以下のコマンドを実行して必要なライブラリ（Express, EJS）をインストールする．
-\begin{verbatim}
-$ npm install express ejs
-\end{verbatim}
-\end{enumerate}
-
-\subsection{運用操作}
-\subsubsection{起動と停止}
-\begin{itemize}
-    \item \textbf{システムの起動}: \\
-    以下のコマンドを実行すると，Webサーバーがポート8080で起動する．
-\begin{verbatim}
-$ node app5.js
-\end{verbatim}
-    起動後，ブラウザで \texttt{http://localhost:8080/umaibo} 等へアクセスし，画面が表示されることを確認する．
-
-    \item \textbf{システムの停止}: \\
-    起動中のターミナルで \texttt{Ctrl + C} キーを入力することで，サーバープロセスを終了（停止）できる．
-\end{itemize}
-
-\subsection{運用上の注意}
-本システムを運用するにあたり，以下の点に注意する必要がある．
-
-\begin{itemize}
-    \item \textbf{データの永続性について}: \\
-    本システムは簡易的な実装のため，登録されたデータ（うまい棒やキャラの情報）はサーバーのメモリ（変数）上にのみ保存される．したがって、\textbf{サーバーを再起動（停止）すると，追加・変更したデータはすべて初期状態に戻る}仕様である．重要なデータを扱う場合は，別途データベースの実装が必要となる．
-    
-    \item \textbf{ポート番号の競合}: \\
-    本システムはポート8080を使用する．同一サーバー内で他のアプリケーションがポート8080を使用している場合，起動に失敗する．その際は，ソースコード内のポート番号設定を変更するか競合するプロセスを停止する必要がある．
-\end{itemize}
-
-
-\section{開発者向け仕様書}
-%  システムごとに1つで計3つ記述
-\subsection{ファイル構成}
-本システムのディレクトリ構成は以下の通りである。
-\begin{itemize}
-    \item \texttt{app5.js}: サーバーサイドのメインプログラム
-    \item \texttt{views/}: 画面表示用テンプレート (EJSファイル)
-    \item \texttt{public/}: 静的ファイル (新規登録用HTML)
-\end{itemize}
-
 \section{開発者向け仕様書}
 % 要件: システムごとに記述
 
@@ -487,5 +295,199 @@ URL内の \texttt{:index} は，配列内の要素番号を示すパラメータ
     \caption{画面遷移図}
     \label{fig:9}
 \end{figure}
+
+\section{管理者向け仕様書}
+% 管理者からすると1つのシステムのため全体で1つ記述
+
+\subsection{システム概要}
+本システムは，Node.js環境上で動作するWebアプリケーションである．
+WebアプリケーションフレームワークとしてExpress，テンプレートエンジンとしてEJSを採用している．
+
+\subsection{動作環境}
+\begin{itemize}
+    \item Node.js 
+    \item Webブラウザ
+\end{itemize}
+
+\subsection{導入手順}
+本システムをサーバー環境へ導入（インストール）する手順は以下の通りである．
+
+\begin{enumerate}
+    \item \textbf{Node.jsのインストール}: \\
+    公式サイトよりNode.jsをダウンロードし，インストールする．
+    
+    \item \textbf{ソースコードの配置}: \\
+    任意のディレクトリを作成し，提出されたソースコード一式（\texttt{.js}ファイル、\texttt{views}フォルダ、\texttt{public}フォルダ）を配置する．
+    
+    \item \textbf{依存ライブラリのインストール}: \\
+    ターミナルで該当ディレクトリに移動し，以下のコマンドを実行して必要なライブラリ（Express, EJS）をインストールする．
+\begin{verbatim}
+$ npm install express ejs
+\end{verbatim}
+\end{enumerate}
+
+\subsection{運用操作}
+\subsubsection{起動と停止}
+\begin{itemize}
+    \item \textbf{システムの起動}: \\
+    以下のコマンドを実行すると，Webサーバーがポート8080で起動する．
+\begin{verbatim}
+$ node app5.js
+\end{verbatim}
+    起動後，ブラウザで \texttt{http://localhost:8080/umaibo} 等へアクセスし，画面が表示されることを確認する．
+
+    \item \textbf{システムの停止}: \\
+    起動中のターミナルで \texttt{Ctrl + C} キーを入力することで，サーバープロセスを終了（停止）できる．
+\end{itemize}
+
+\subsection{運用上の注意}
+本システムを運用するにあたり，以下の点に注意する必要がある．
+
+\begin{itemize}
+    \item \textbf{データの永続性について}: \\
+    本システムは簡易的な実装のため，登録されたデータ（うまい棒やキャラの情報）はサーバーのメモリ（変数）上にのみ保存される．したがって、\textbf{サーバーを再起動（停止）すると，追加・変更したデータはすべて初期状態に戻る}仕様である．重要なデータを扱う場合は，別途データベースの実装が必要となる．
+    
+    \item \textbf{ポート番号の競合}: \\
+    本システムはポート8080を使用する．同一サーバー内で他のアプリケーションがポート8080を使用している場合，起動に失敗する．その際は，ソースコード内のポート番号設定を変更するか競合するプロセスを停止する必要がある．
+\end{itemize}
+
+
+\section{開発者向け仕様書}
+%  システムごとに1つで計3つ記述
+\subsection{ファイル構成}
+本システムのディレクトリ構成は以下の通りである。
+\begin{itemize}
+    \item \texttt{app5.js}: サーバーサイドのメインプログラム
+    \item \texttt{views/}: 画面表示用テンプレート (EJSファイル)
+    \item \texttt{public/}: 静的ファイル (新規登録用HTML)
+\end{itemize}
+
+\section{利用者向け仕様書}
+% 3つの内の代表的なシステムについて1つ記述
+
+\subsection{システム概要}
+本システムは，うまい棒の情報を管理・閲覧するためのWebアプリケーションである．
+利用者は，うまい棒の味，価格，カロリーなどを一覧で確認できるほか，詳細情報の閲覧や新規登録が可能である．
+
+\subsection{利用方法}
+普段Web サイトを閲覧する際に使用しているブラウザを起動し，http://localhost:8080/umaibo を入力してアクセスする．図\ref{fig:1}のような画面が表示されたらサイトを開けている状態である．
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{homepage.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトを開いた際に表示される画面の例}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:1}
+\end{figure}
+
+\subsection{操作方法}
+\subsubsection{一覧画面}
+トップページにアクセスすると，図\ref{fig:1}のような現在登録されているうまい棒の一覧が表示される．ここには，これまでに登録されたうまい棒が一覧表示でみれる．
+\subsubsection{詳細表示}
+詳細を表示したい場合は，画面内の青色や紫色になっているうまい棒の味をクリックする．一例として，「コーンポタージュ」をクリックしたら図\ref{fig:2}のように，価格やカロリー数などの詳細が書かれた画面が表示される．一覧画面に戻りたい場合は図\ref{fig:3}にて赤い線で囲っている「一覧に戻る」をクリックする．
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{corn.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトのコーンポタージュのページを開いた際に表示される画面の例}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{all.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で一覧表示のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:2}
+\end{figure}
+
+\subsubsection{新規登録}
+図\ref{fig:4}のように一覧画面下部の「新規追加」ボタンを押すと，図\ref{fig:5}の登録画面に遷移する．そこで必要な情報を入力して「登録」を押すとデータが保存される．
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{new.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトを開いた際に表示される画面で新規登録のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{newpage.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトの新規登録ページを開いた際に表示される画面で登録のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:5}
+\end{figure}
+
+
+\subsubsection{情報編集}
+登録した（もしくはされた）情報は，図\ref{fig:6}でマークが付いてるように，「編集」のボタンを押したら図\ref{fig:7}の編集画面に遷移する．そこで変えたい項目を書き換えて「登録」を押すとデータが保存される．
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{re.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で編集のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:6}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{ret.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトの編集ページを開いた際に表示される画面で登録のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:7}
+\end{figure}
+
+\subsubsection{削除}
+図\ref{fig:8}に示している詳細画面にある「削除」リンクをクリックすると，その時開いているページの項目が一覧画面から削除される．
+
+\begin{figure}[H]
+    \centering
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+     \centering
+    \includegraphics[width=15cm]{deliet.png}
+    %\vspace{\baselineskip}
+    %\vspace{-1.5\baselineskip}
+    \caption{うまい棒管理システムのサイトのどれかのページを開いた際に表示される画面で削除のボタンを示している画像}
+    %\vspace{-1.0\baselineskip}
+    \label{fig:8}
+\end{figure}
+
 
 \end{document}
